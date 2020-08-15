@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="card bg-dark text-white m-3 mt-5">
+    <h5 class="card-header text-center">
+      <img src="../assets/lco.png" alt="" width="30" height="30" class="mr-2" />
+      Signup Form
+    </h5>
+    <div class="card-body">
+      <form [formGroup] ="registerForm" (ngSUbmit)="onSubmit" >
+        <div class="form-row">
+          <div class="form-group col-6">
+            <label>First Name</label>
+            <input
+            type="text" class="form-control"
+            formControlName="firstName" 
+            [ngClass]="{'is-invalid': subimitted && h.firstName.errors}"
+            />
+            <div class="text-warning">
+              <div>
+                First Name is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-6">
+            <label>Last Name</label>
+            <input type="text" class="form-control"
+            formControlName="LastName" 
+            [ngClass]="{'is-invalid': subimitted && h.LastName.errors}"
+             />
+            <div class="text-warning">
+              <div>
+                Last Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control" 
+          formControlName="email" 
+            [ngClass]="{'is-invalid': subimitted && h.email.errors}"
+            />
+          <div class="text-warning">
+            <div>Email is required</div>
+            <div>
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+
+        <ng-container>
+          <div class="text-danger">
+            Value is required.
+          </div>
+        </ng-container>
+        <div class="form-row">
+          <div class="form-group col">
+            <label>Password</label>
+            <input type="password" class="form-control"
+            formControlName="password" 
+            [ngClass]="{'is-invalid': subimitted && password.errors}"
+             />
+            <div class="text-warning">
+              <div>Password is required</div>
+              <div>
+                Password must be at least 6 characters
+              </div>
+            </div>
+          </div>
+          <div class="form-group col">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" 
+            formControlName="confirmPassword" 
+            [ngClass]="{'is-invalid': subimitted && h.confirmPassword.errors}"
+            />
+            <div class="text-warning">
+              <div>
+                Confirm Password is required
+              </div>
+              <div>
+                Passwords must match
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" id="acceptTerms" class="form-check-input" />
+          <label for="acceptTerms" class="form-check-label"
+          formControlName="accceptTnC" 
+            [ngClass]="{'is-invalid': subimitted && h.acceptTnC.errors}"
+            
+            >Accept Terms & Conditions</label
+          >
+          <div class="text-warning">
+            Accept Ts & Cs is required
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-success btn-lg px-4 mr-3">Register</button>
+          <button (click)="onReset" class="btn btn-warning" type="reset">
+            Reset
+          </button>
+          <p class="text white">Value: {{ registerForm.value | json }}</p>
+          <p class="text white">Value: {{ registerForm.valid | json }}</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
